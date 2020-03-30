@@ -39,6 +39,7 @@ class TerminalModule(TerminalBase):
         re.compile(br"connection timed out", re.I),
         re.compile(br"[^\r\n]+ not found"),
         re.compile(br"'[^']' +returned error code: ?\d+"),
+	re.compile(br"% Running configuration store is locked by other client"),
     ]
 
     def on_open_shell(self):
