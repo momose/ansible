@@ -34,12 +34,13 @@ class TerminalModule(TerminalBase):
     terminal_stderr_re = [
         re.compile(br"% ?Error"),
         re.compile(br"% ?Bad secret"),
-        re.compile(br"invalid input", re.I),
-        re.compile(br"(?:incomplete|ambiguous) command", re.I),
         re.compile(br"connection timed out", re.I),
         re.compile(br"[^\r\n]+ not found"),
         re.compile(br"'[^']' +returned error code: ?\d+"),
-	re.compile(br"% Running configuration store is locked by other client"),
+        re.compile(br"\r\n% (?:Incomplete|Unrecognized) command", re.I),
+        re.compile(br"\r\n% Invalid input", re.I),
+        re.compile(br"% Running configuration store is locked by other client"),
+        re.compile(br"\r\n%% "),
     ]
 
     def on_open_shell(self):
